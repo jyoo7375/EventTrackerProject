@@ -16,13 +16,14 @@ CREATE SCHEMA IF NOT EXISTS `sleeptrackerdb` DEFAULT CHARACTER SET utf8 ;
 USE `sleeptrackerdb` ;
 
 -- -----------------------------------------------------
--- Table `sleepTracker`
+-- Table `user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `sleepTracker` ;
+DROP TABLE IF EXISTS `user` ;
 
-CREATE TABLE IF NOT EXISTS `sleepTracker` (
+CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL,
-  `name` VARCHAR(2000) NULL)
+  `name` VARCHAR(2000) NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 SET SQL_MODE = '';
@@ -37,11 +38,11 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `sleepTracker`
+-- Data for table `user`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `sleeptrackerdb`;
-INSERT INTO `sleepTracker` (`id`, `name`) VALUES (1, 'Username');
+INSERT INTO `user` (`id`, `name`) VALUES (1, 'Jay');
 
 COMMIT;
 
