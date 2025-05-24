@@ -21,9 +21,13 @@ USE `sleeptrackerdb` ;
 DROP TABLE IF EXISTS `user` ;
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` INT NOT NULL,
-  `name` VARCHAR(2000) NULL,
-  PRIMARY KEY (`id`))
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(100) NULL,
+  `enabled` TINYINT NULL,
+  `role` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE)
 ENGINE = InnoDB;
 
 
@@ -33,18 +37,17 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `sleep_log` ;
 
 CREATE TABLE IF NOT EXISTS `sleep_log` (
-  `id` INT NOT NULL,
-  `user_id` INT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `date` DATE NULL,
   `bed_time` DATETIME NULL,
   `wake_time` DATETIME NULL,
   `notes` TEXT NULL,
   `tiredness` SMALLINT NULL,
-  `user_id1` INT NOT NULL,
-  PRIMARY KEY (`id`, `user_id1`),
-  INDEX `fk_sleep_log_user_idx` (`user_id1` ASC) VISIBLE,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `user_id`),
+  INDEX `fk_sleep_log_user_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_sleep_log_user`
-    FOREIGN KEY (`user_id1`)
+    FOREIGN KEY (`user_id`)
     REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -66,7 +69,17 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `sleeptrackerdb`;
-INSERT INTO `user` (`id`, `name`) VALUES (1, 'Jay');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (1, 'Jay', NULL, 1, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `sleep_log`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `sleeptrackerdb`;
+INSERT INTO `sleep_log` (`id`, `date`, `bed_time`, `wake_time`, `notes`, `tiredness`, `user_id`) VALUES (1, '2025-05-23', '2025-05-23 22:45:00', '2025-05-24 07:25:00', 'Woke up couple of times , changed sleeping position', 1, 1);
 
 COMMIT;
 

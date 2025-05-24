@@ -1,11 +1,15 @@
 package com.skilldistillery.sleep.entities;
 
+import java.util.List;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,7 +20,17 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private String name;
+	private String username;
+	
+	private String password;
+	
+	private Boolean enabled;
+	
+	private String role;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "user")
+	private List<SleepLog> sleepLogs;
 
 	public User() {
 		super();
@@ -47,17 +61,49 @@ public class User {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String name) {
+		this.username = name;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public List<SleepLog> getSleepLogs() {
+		return sleepLogs;
+	}
+
+	public void setSleepLogs(List<SleepLog> sleepLogs) {
+		this.sleepLogs = sleepLogs;
 	}
 
 	@Override
 	public String toString() {
-		return "SleepTracker [id=" + id + ", name=" + name + "]";
+		return "SleepTracker [id=" + id + ", name=" + username + "]";
 	}
 	
 	
