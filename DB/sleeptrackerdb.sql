@@ -26,6 +26,30 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+
+-- -----------------------------------------------------
+-- Table `sleep_log`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `sleep_log` ;
+
+CREATE TABLE IF NOT EXISTS `sleep_log` (
+  `id` INT NOT NULL,
+  `user_id` INT NULL,
+  `date` DATE NULL,
+  `bed_time` DATETIME NULL,
+  `wake_time` DATETIME NULL,
+  `notes` TEXT NULL,
+  `tiredness` SMALLINT NULL,
+  `user_id1` INT NOT NULL,
+  PRIMARY KEY (`id`, `user_id1`),
+  INDEX `fk_sleep_log_user_idx` (`user_id1` ASC) VISIBLE,
+  CONSTRAINT `fk_sleep_log_user`
+    FOREIGN KEY (`user_id1`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 SET SQL_MODE = '';
 DROP USER IF EXISTS sleeptracker@localhost;
 SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
