@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @RequestMapping("api")
 public class SleepLogController {
 	
-	private String username = "Jay";
+	private String username = "User";
 	
 	@Autowired
 	private SleepLogService sleepLogService;

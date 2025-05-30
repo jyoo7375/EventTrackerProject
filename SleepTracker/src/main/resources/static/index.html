@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sleep Tracker</title>
+<link rel="stylesheet" href="css/main.css">
+<script type="text/javascript" src="js/script.js"></script>
+</head>
+<body>
+
+<h1>Welcome to Sleep Tracker</h1>
+
+<p>Track your sleep pattern for better sleep quality and health</p>
+
+<!-- TODO carousel? -->
+
+<div id="logFormSection">
+    <h2>Log Your Sleep</h2>
+    <form name="sleepLogForm">
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" required><br>
+
+      <label for="bedTime">Bed Time:</label>
+      <input type="time" id="bedTime" name="bedTime" required><br>
+
+      <label for="wakeTime">Wake Time:</label>
+      <input type="time" id="wakeTime" name="wakeTime" required><br>
+      
+      <label for="notes">Notes</label>
+      <input type="text" id="notes" name="notes"><br>
+      
+      <label for="tiredness">Tiredness</label>
+      <input type="text" id="tiredness" name="tiredness"><br>
+
+      <button name="submit"type="submit">Submit</button>
+    </form>
+  </div>
+<div id="logDisplaySection">
+    <h2>Sleep Logs</h2>
+    <table>
+      <thead>
+        <tr><th>Date</th><th>Bed Time</th><th>Wake Time</th><th>Notes</th></tr>
+      </thead>
+      <tbody id="logFormTableBody">
+      
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

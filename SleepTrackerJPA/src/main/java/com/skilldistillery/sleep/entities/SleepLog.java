@@ -2,6 +2,7 @@ package com.skilldistillery.sleep.entities;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Objects;
 
 import org.hibernate.annotations.UpdateTimestamp;
@@ -29,13 +30,13 @@ public class SleepLog {
 	
 	private LocalDate date;
 	
-	@UpdateTimestamp
-	@Column(name="bed_time")
-	private LocalDateTime bedTime;
 	
-	@UpdateTimestamp
+	@Column(name="bed_time")
+	private LocalTime bedTime;
+	
+	
 	@Column(name="wake_time")
-	private LocalDateTime wakeTime;
+	private LocalTime wakeTime;
 	
 	private String notes;
 	
@@ -86,19 +87,19 @@ public class SleepLog {
 		this.date = date;
 	}
 
-	public LocalDateTime getBedTime() {
+	public LocalTime getBedTime() {
 		return bedTime;
 	}
 
-	public void setBedTime(LocalDateTime bedTime) {
+	public void setBedTime(LocalTime bedTime) {
 		this.bedTime = bedTime;
 	}
 
-	public LocalDateTime getWakeTime() {
+	public LocalTime getWakeTime() {
 		return wakeTime;
 	}
 
-	public void setWakeTime(LocalDateTime wakeTime) {
+	public void setWakeTime(LocalTime wakeTime) {
 		this.wakeTime = wakeTime;
 	}
 
