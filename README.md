@@ -3,7 +3,7 @@
 ## Description
 - Sleep Tracker is a simple RESTful web application that allows users to log their night sleep patterns. Each user can record when they went to bed, when they woke up, how tired they felt, and any additional notes about their sleep. The application stores this information in a relational database and provides basic CRUD functionality for managing sleep entries.
 
-## Technologies used
+## Technologies used for Back End
 - Java
 - Spring Eclipse
 - Spring MVC
@@ -15,12 +15,22 @@
 - Gradle
 - Junit
 
+## Technologies used for Front End
+- HTML
+- CSS
+- Bootstrap
+- JavaScript
+
+
 ## Concepts applied
 - Object Oriented Java Programming
 - Object Relational Mapping
 - Database Query
 - MVC Mapping
 - CRUD Operation
+- AJAX
+- JSON
+- DOM
 
 ## Lessons learned
 - I became more comfortable with handling HTTP Verbs like GET, POST, PUT, and DELETE in a RESTful API context.
