@@ -44,7 +44,7 @@
       		<input type="text" id="tiredness" name="tiredness"><br>
 		</div>
 		
-      <button name="submit"type="submit">Submit</button>
+      <button name="submit"type="submit" class="btn btn-success">Submit</button>
     </form>
   </div>
   
@@ -68,27 +68,36 @@
     </table>
     </div>
   </div>
-<div id="updateFormSection">
-	<h2>Update Sleep Log</h2>
+<div id="updateFormSection" class="mb-5">
+	<h2 class="mb-3">Update Sleep Log</h2>
 	<form name="updateLogForm">
 		<input type="hidden" id="updatedId" name="id"><br>
 		
-		<label for="updatedDate">Date:</label>
-		<input type="date" id="updatedDate" name="date"><br>
+		<div class="mb-3">
+			<label for="updatedDate">Date:</label>
+			<input type="date" id="updatedDate" name="date"><br>
+		</div>
 		
-		<label for="updatedBedTime">Bed Time:</label> 
-		<input type="time" id="updatedBedTime" name="bedTime"><br>
+		<div class="mb-3">
+			<label for="updatedBedTime">Bed Time:</label> 
+			<input type="time" id="updatedBedTime" name="bedTime"><br>
+		</div>
 		
-		<label for="updatedWakeTime">Wake Time</label>
-		<input type="time" id="updatedWakeTime" name="wakeTime"><br>
+		<div class="mb-3">
+			<label for="updatedWakeTime">Wake Time</label>
+			<input type="time" id="updatedWakeTime" name="wakeTime"><br>
+		</div>
 		
-		<label for="updatedNotes">Notes: </label>
-		<input type="text" id="updatedNotes" name="notes"><br>
+		<div class="mb-3">
+			<label for="updatedNotes">Notes: </label>
+			<input type="text" id="updatedNotes" name="notes"><br>
+		</div>
 		
-		<label for="updatedTiredness">Tiredness:</label>
-		<input type="number" id="updatedTiredness" name="tiredness"><br>
-		
-		<button type="submit">Update</button>
+		<div class="mb-3">
+			<label for="updatedTiredness">Tiredness:</label>
+			<input type="number" id="updatedTiredness" name="tiredness"><br>
+		</div>
+		<button type="submit" name="submit" class="btn btn-success">Update</button>
 	</form>
 </div>
 
