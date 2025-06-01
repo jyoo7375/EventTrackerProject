@@ -36,6 +36,8 @@
 - I became more comfortable with handling HTTP Verbs like GET, POST, PUT, and DELETE in a RESTful API context.
 - I got a better understanding with CRUD operations and how to map those to HTTP verbs
 - I also became more comfortable with HTTP status codes (200 OK, 201 Created, 204 No Content, 400 Bad Request, 404 Not Found) based on different CRUD outcomes.
+- Experienced using the XMLHttpRequest in JavaScript to perform CRUD operations.
+- Learned to use addEventListener in JavaScript to handle both click and submit events, enabling user interaction without page reload by utilizing preventDefault().
 
 
 ### Endpoints
