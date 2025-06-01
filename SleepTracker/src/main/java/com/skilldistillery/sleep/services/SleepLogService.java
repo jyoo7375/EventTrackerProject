@@ -6,7 +6,7 @@ import com.skilldistillery.sleep.entities.SleepLog;
 
 public interface SleepLogService {
 	
-	SleepLog findUserById(int id);
+	SleepLog findById(int id);
 	List<SleepLog> findByUsername(String username);
 	SleepLog createSleepLog(String username, SleepLog newSleepLog);
 	boolean deleteSleepLog(String username, int sleepLogId);

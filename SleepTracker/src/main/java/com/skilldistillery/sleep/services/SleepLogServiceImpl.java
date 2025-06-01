@@ -21,7 +21,7 @@ public class SleepLogServiceImpl implements SleepLogService{
 	private UserRepository userRepo;
 
 	@Override
-	public SleepLog findUserById(int id) {
+	public SleepLog findById(int id) {
 		return sleepLogRepo.findById(id).orElse(null);
 	}
 

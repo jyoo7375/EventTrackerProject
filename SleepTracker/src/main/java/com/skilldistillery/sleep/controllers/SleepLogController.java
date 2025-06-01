@@ -35,6 +35,14 @@ public class SleepLogController {
 		}
 		return sleepLog;
 	}
+	@GetMapping("sleeplogs/{sleeplogId}")
+	public SleepLog findById(@PathVariable("sleeplogId")int sleeplogId, HttpServletResponse res) {
+		SleepLog sleepLog = sleepLogService.findById(sleeplogId);
+		if(sleepLog == null) {
+			res.setStatus(HttpServletResponse.SC_NOT_FOUND);
+		}
+		return sleepLog;
+	}
 	
 	@PostMapping("sleeplogs")
 	public SleepLog create(@RequestBody SleepLog newSleepLog,

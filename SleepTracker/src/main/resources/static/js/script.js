@@ -19,6 +19,21 @@ function init(){
 		createSleepLog(newSleepLog);
 	});
 	loadLogForm();
+	
+	document.updateLogForm.addEventListener('submit', function(event){
+		event.preventDefault();
+		let id = document.getElementById('updatedId').value
+		
+		let updatedSleepLog = {
+			id: updateLogForm.id.value,
+			date: updateLogForm.updatedDate.value,
+			bedTime: updateLogForm.updatedBedTime.value,
+			wakeTime: updateLogForm.updatedWakeTime.value,
+			notes: updateLogForm.updatedNotes.value,
+			tiredness: updateLogForm.updatedTiredness.value
+		};
+		updateSleepLog(id, updatedSleepLog);
+	});
 }
 
 function loadLogForm(){
@@ -60,20 +75,31 @@ function displayLogForm(logFormList){
 		
 		let tdNotes = document.createElement('td');
 		tdNotes.textContent = form.notes;
-		tr.appendChild(tdWake);
+		tr.appendChild(tdNotes);
 		
 		let tdTiredness = document.createElement('td');
 		tdTiredness.textContent = form.tiredness;
-		tr.appendChild(tdNotes);
+		tr.appendChild(tdTiredness);
 		
-		let tdDelete = document.createElement('td');
-		let deleteButton = document.createElement('button')
+		let tdAction = document.createElement('td');
+		
+		let deleteButton = document.createElement('button');
 		deleteButton.textContent = 'Delete';
+		deleteButton.classList.add('btn', 'btn-sm', 'btn-outline-danger', 'me-2')
 		deleteButton.addEventListener('click', function(){
 			deleteSleepLog(form.id);
 		});
-		tdDelete.appendChild(deleteButton);
-		tr.appendChild(tdDelete);
+		tdAction.appendChild(deleteButton);
+		
+		let updateButton = document.createElement('button');
+		updateButton.textContent = 'Update';
+		updateButton.classList.add('btn', 'btn-sm', 'btn-outline-primary');
+		updateButton.addEventListener('click', function(){
+			gotoUpdate(form.id);
+		});
+		tdAction.appendChild(updateButton);
+		
+		tr.appendChild(tdAction);
 		tbody.appendChild(tr);
 	}
 	
@@ -108,5 +134,51 @@ function deleteSleepLog(sleepLogId){
 			}
 		};
 		xhr.send();
+	
+}
+
+function updateSleepLog(sleepLogId, updatedSleepLog){
+	let url = 'api/sleeplogs/' + sleepLogId;
+	let xhr = new XMLHttpRequest();
+	xhr.open('PUT', url);
+	xhr.setRequestHeader("Content-type", "application/json");
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState === xhr.DONE){
+			if(xhr.status === 200){
+			let update = JSON.parse(xhr.responseText);
+			console.log(update);
+				loadLogForm();
+			}
+		}
+	}
+	
+	let sleepLogJson = JSON.stringify(updatedSleepLog);
+	xhr.send(sleepLogJson);
+}
+
+function gotoUpdate(sleepLogId){
+	let url = 'api/sleeplogs/' + sleepLogId;
+			let xhr = new XMLHttpRequest();
+			xhr.open('GET', url);
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState === xhr.DONE){
+					if(xhr.status === 200){
+						let updatedLog = JSON.parse(xhr.responseText);
+						displayUpdateForm(updatedLog);
+					}
+				}
+			};
+			xhr.send();
+		
+}
+
+function displayUpdateForm(sleepLog){
+	updateLogForm.id.value = sleepLog.id;
+	updateLogForm.date.value = sleepLog.date;
+	updateLogForm.wakeTime.value = sleepLog.wakeTime;
+	updateLogForm.bedTime.value = sleepLog.bedTime;
+	updateLogForm.notes.value = sleepLog.notes;
+	updateLogForm.tiredness.value = sleepLog.tiredness;
+	
 	
 }
