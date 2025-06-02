@@ -80,7 +80,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `sleeptrackerdb`;
-INSERT INTO `sleep_log` (`id`, `date`, `bed_time`, `wake_time`, `notes`, `tiredness`, `user_id`) VALUES (1, '2025-05-23', '22:45:00', '07:25:00', 'Woke up couple of times , changed sleeping position', 1, 1);
+INSERT INTO `sleep_log` (`id`, `date`, `bed_time`, `wake_time`, `notes`, `tiredness`, `user_id`) VALUES (1, '2025-05-23', '2025-05-23 22:45:00', '2025-05-24 07:25:00', 'Woke up couple of times , changed sleeping position', 1, 1);
 
 COMMIT;
 
