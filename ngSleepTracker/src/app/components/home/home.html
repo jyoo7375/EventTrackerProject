@@ -1,0 +1,81 @@
+<main>
+  <h1>{{Title}}</h1>
+  <p>Track your sleep pattern for better sleep quality and health</p>
+
+  <h3>Log Your Sleep</h3>
+  <form name="sleepLogForm">
+    <div class="mb-3">
+      Date:<input type="date" name="newDate"[(ngModel)]="newSleepLog.date"><br>
+      BedTime:<input type="time" name="newBedTime"[(ngModel)]="newSleepLog.bedTime"><br>
+      WakeTime:<input type="time" name="newWakeTime" [(ngModel)]="newSleepLog.wakeTime"><br>
+      Notes: <input type="text" name="newNotes" [(ngModel)]="newSleepLog.notes"><br>
+      Tiredness: <input type="number" name="newTirdness" min="1" max="5" [(ngModel)]="newSleepLog.tiredness"><br>
+      <button name="add"type="submit" class="btn btn-success"(click)="addSleepLog(newSleepLog)">Add Sleep Log</button>
+
+    </div>
+  </form>
+
+  <h2>Average sleep hour</h2>
+  @if(!selected){
+    <table class="table table-striped">
+      <thead class = "table-dark">
+        <tr>
+          <th>Date</th>
+          <th>Bed Time</th>
+          <th>Wake Time</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(log of SleepLogs; track log.id){
+          <tr>
+            <td (click)="selected = log">{{ log.date }}</td>
+            <td (click)="selected = log">{{ log.bedTime }}</td>
+            <td (click)="selected = log">{{ log.wakeTime }}</td>
+            <td><button class="btn btn-danger" (click)="deleteSleepLog(log.id)">X</button></td>
+          </tr>
+        }
+
+      </tbody>
+    </table>
+  }
+
+  @if(selected && !editSleepLog){
+    <table class="table table-striped">
+      <thead class = "table-dark">
+        <tr>
+          <th>Date</th>
+          <th>Bed Time</th>
+          <th>Wake Time</th>
+          <th>Notes</th>
+          <th>Tiredness</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <td>{{selected.date}}</td>
+        <td>{{selected.bedTime}}</td>
+        <td>{{selected.wakeTime}}</td>
+        <td>{{selected.notes}}</td>
+        <td>{{selected.tiredness}}</td>
+        <button class="btn btn-secondary" (click)="selected = null">Back</button>
+        <button class="btn btn-primary" (click)="setEditSleepLog()">Edit</button>
+      </tbody>
+    </table>
+  }
+
+  @if(editSleepLog){
+    <div>
+      <h3>Editing Sleep Log ID: {{editSleepLog.id}}</h3>
+      <form>
+        Date: <input type="text" name="updatedDate"[(ngModel)]="editSleepLog.date"><br>
+        Bed Time: <input type="time" name="updatedBedTime" [(ngModel)]="editSleepLog.bedTime"><br>
+        Wake Time: <input type="time" name="updatedWakeTime" [(ngModel)]="editSleepLog.wakeTime"><br>
+        Notes: <input type="text" name="updatedNotes" [(ngModel)]="editSleepLog.notes"><br>
+        Tiredness: <input type="number" name="updatedTirdness" min="1" max="5" [(ngModel)]="editSleepLog.tiredness"><br>
+        <button class="btn btn-outline-secondary"(click)="editSleepLog = null">Cancel</button>
+        <button class="btn btn-outline-secondary"(click)="updateSleepLog(editSleepLog)">Save</button>
+      </form>
+    </div>
+  }
+</main>

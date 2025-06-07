@@ -1,0 +1,26 @@
+main {
+  background: linear-gradient(60deg, #04e0ef, #0495ef, #bb45ed, #cf2def);
+  background-size: 200% 200%;
+  animation: waveFlow 6s ease-in-out infinite;
+  min-height: 100vh;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+table, .table-striped, table td, .table th {
+  background-color: transparent;
+}
+
+
+
+@keyframes waveFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
