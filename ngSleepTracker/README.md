@@ -1,59 +1,52 @@
 # NgSleepTracker
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
+## Description
+- NgSleepTracker is a RESTful web application that enables user to log and manage their sleep patterns. User can record when they went to bed, when they woke up, how tired they felt, and add any additional notes about their sleep. This application stores information in a relational database and provides basic CRUD functionality, with Angular frontend and Spring Boot backend.
 
-## Development server
+## Technologies used for Back End
+- Java
+- Spring Eclipse
+- Spring MVC
+- Spring JPA
+- Sublime
+- MAMP
+- MySQL
+- MySQL Workbench
+- Gradle
+- Junit
 
-To start a local development server, run:
+## Technologies used for Front End
+- Angular
+- HTML
+- CSS
+- Bootstrap
+- JavaScript
 
-```bash
-ng serve
-```
+## Concepts applied
+- Object Oriented Java Programming
+- Object Relational Mapping
+- Database Query
+- MVC Mapping
+- CRUD Operation
+- AJAX
+- JSON
+- DOM
+- Two-way data binding
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Lessons learned
+- I became more comffortable with RESTful API endpoints using HTTP methods in angular.
+- Learned to persist and retrieve data using Spring DATA JPA and mapping it to the frontend.
+- Learned the importance of binding form input data using [(ngModel)]
+- Learned how to use Observables<> in Angular to handle asynchronous data from HTTP requests.
+- Got more experience with using .pipe() in Angular to manage data and error handling in HTTP service methods.
+- Better understanding of @Injectectable() in Angular for creating and injecting services.
 
-## Code scaffolding
+### Endpoints
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+| HTTP Verb | URI                  | Request Body              | Response Body              | Status               |
+|-----------|----------------------|---------------------------|----------------------------|----------------------|
+| GET       | /api/sleeplogs       |                           | List of sleeplogs          | 200                  |
+| GET       | /api/sleeplogs/17    |                           | Single sleeplog            | 200 or 404           |
+| POST      | /api/sleeplogs       | JSON of new sleeplog      | JSON of created sleeplog   | 201 or 400           |
+| PUT       | /api/sleeplogs/17    | JSON for updating sleeplog| JSON of updated sleeplog   | 200, 404, or 400     |
+| DELETE    | /api/sleeplogs/17    |                           |                            | 204, 404, or 400     |

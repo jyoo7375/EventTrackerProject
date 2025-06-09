@@ -83,4 +83,24 @@ export class Home implements OnInit{
   this.editSleepLog = null;
   }
 
+  getAverageSleepHours(): number{
+    let total = 0;
+    let count = 0;
+
+    for(let log of this.SleepLogs){
+      const [bedH, bedM] = log.bedTime.split(':').map(Number);
+      const [wakeH, wakeM] = log.wakeTime.split(':').map(Number)
+      const bedMinutes = bedH * 60 + bedM;
+      let wakeMinutes = wakeH * 60 + wakeM;
+
+      if(wakeMinutes <= bedMinutes){
+        wakeMinutes += 24 * 60;
+      }
+      total += wakeMinutes - bedMinutes;
+      count++;
+    }
+    return count > 0 ? +(total / count / 60).toFixed(2) : 0;
+  }
+
+
 }

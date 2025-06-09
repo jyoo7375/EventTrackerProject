@@ -1,6 +1,7 @@
 package com.skilldistillery.sleep.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import com.skilldistillery.sleep.services.UserService;
 
 import jakarta.servlet.http.HttpServletResponse;
 
+@CrossOrigin({"*", "http://localhost/"})
 @RestController
 @RequestMapping("api")
 public class UserController {
